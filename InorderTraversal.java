@@ -14,20 +14,20 @@ class Node{
 
 public class InorderTraversal {
 
-    static void preorderTraversal(Node node){
+    static void InorderTraversal(Node node){
         //Base Case
         if(node == null){
             return;
         }
 
         //Recur on the Left Tree
-        preorderTraversal(node.left);
+        InorderTraversal(node.left);
 
         //Visit the current node
         System.out.println(node.key+" ");
 
         //Recur on the Right Tree
-        preorderTraversal(node.right);
+        InorderTraversal(node.right);
 
     }
     
@@ -38,6 +38,6 @@ public class InorderTraversal {
         root.right.left = new Node(40);
         root.right.right = new Node(50);
 
-        preorderTraversal(root);
+        InorderTraversal(root);
     }
 }
