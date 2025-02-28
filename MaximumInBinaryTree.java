@@ -17,7 +17,7 @@ public class MaximumInBinaryTree {
             return Integer.MIN_VALUE;
         }
         else{
-            return Math.max(node.key,Math.max(maximumValue(node.left),maximumValue(node.right)));
+            return Math.max(node.key,Math.max(maximumValue(node.left),maximumValue(node.right))); 
         }
     }
     public static void main(String[] args){
