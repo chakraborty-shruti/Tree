@@ -14,20 +14,19 @@ class Node{
 
 public class BinaryTreeToDLL {
 
-    static void BToDLL(Node root, Node head){
-        if(root == null) return;
-        BToDLL(root.right, head);
-        root.right = head;
-        if(head != null){
-            head.left = root;
-        }
-        head = root;
-        BToDLL(root.right, head); 
-    }
+    static Node prev = null;
 
-    static void BinaryTreeToDLL(Node root){
-        Node head = null;
-        BToDLL(root,head);
+    static Node BinaryTreeToDLL(Node root){
+        if(root == null) return root;
+        Node head = BinaryTreeToDLL(root.left);
+        if(prev == null){ head = root;}
+        else{
+            root.left = prev;
+            root.right = root;
+        }
+        prev = root;
+        BinaryTreeToDLL(root.right);
+        return head;
     }
 
     static void printList(Node head){
