@@ -14,19 +14,29 @@ class Node{
 
 public class BinaryTreeToDLL {
 
-    static Node prev = null;
+    static Node prev = null;//Track of previous node
+    static Node head = null;//Head of DLL
 
     static Node BinaryTreeToDLL(Node root){
-        if(root == null) return root;
+        if(root == null) return null;
+
+        //Convert left subtree
         Node head = BinaryTreeToDLL(root.left);
-        if(prev == null){ head = root;}
-        else{
-            root.left = prev;
-            root.right = root;
+
+        //Process the current node
+        if(prev == null){ 
+            head = root;
         }
-        prev = root;
+        else{
+            root.left = prev;//Connect current node to previous node
+            prev.right = root;//Connect previous node to current node
+        }
+        prev = root;// Move prev to current
+
+        //Convert right subtree
         BinaryTreeToDLL(root.right);
-        return head;
+
+        return head;//Return the head of DLL
     }
 
     static void printList(Node head){
